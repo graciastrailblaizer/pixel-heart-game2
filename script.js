@@ -48,11 +48,22 @@ function endGame() {
     alert(`Game Over!\nYour Score: ${score}`);
 }
 
+// Function to speed up the game every 10 seconds
+function speedUpGame() {
+    setTimeout(() => {
+        if (timeLeft > 0) {
+            speed -= 50;
+            setTimeout(speedUpGame, 10000); // Speed up every 10 seconds
+        }
+    }, 10000);
+}
+
 // Initial movement of the pixel heart
 movePixelHeart();
 
 // Start moving the pixel heart at intervals
 setInterval(movePixelHeart, speed);
 
-// Start the timer
+// Start the timer and speed-up function
 updateTimer();
+speedUpGame();
